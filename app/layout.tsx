@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             </main>
                             <footer className="text-center py-8 text-white/80">
                                 <p className="text-sm">
-                                    Built with ❤️ by{' '}
+                                    Built with ❤️ by {' '}
                                     <a href="https://github.com/isaaclins" className="text-white/80 hover:text-white underline">
                                         Isaac Lins
                                     </a>
