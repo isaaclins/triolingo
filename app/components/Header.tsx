@@ -2,9 +2,19 @@
 
 import Link from 'next/link';
 import { useGlobalState } from '@/app/context/GlobalStateContext';
+import { useScore } from '@/app/context/ScoreContext';
+import { useParams } from 'next/navigation';
 
 export default function Header() {
-    const { score, hearts, streak } = useGlobalState();
+    const { hearts, streak } = useGlobalState();
+    const { getScore } = useScore();
+    const params = useParams();
+    const languageCode = Array.isArray(params.languageCode) ? params.languageCode[0] : params.languageCode as string | undefined;
+
+    let currentLanguageScore = null;
+    if (languageCode) {
+        currentLanguageScore = getScore(languageCode);
+    }
 
     return (
         <header className="bg-white shadow-lg">
@@ -27,10 +37,18 @@ export default function Header() {
                         <span className="text-red-500">❤️</span>
                         <span className="font-bold text-gray-700">{hearts}</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                        <span className="text-yellow-500">⭐</span>
-                        <span className="font-bold text-gray-700">{score}</span>
-                    </div>
+                    {currentLanguageScore ? (
+                        <div className="flex items-center space-x-2">
+                            <span className="font-bold text-gray-700">
+                                Correct: {currentLanguageScore.correct}, Incorrect: {currentLanguageScore.incorrect}
+                            </span>
+                        </div>
+                    ) : (
+                        <div className="flex items-center space-x-2">
+                            {/* <span className="text-yellow-500">⭐</span> */}
+                            {/* <span className="font-bold text-gray-700">{useGlobalState().score}</span> */}
+                        </div>
+                    )}
                 </div>
             </div>
         </header>

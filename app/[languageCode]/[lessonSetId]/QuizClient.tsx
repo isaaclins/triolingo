@@ -4,6 +4,7 @@ import { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useGlobalState } from '@/app/context/GlobalStateContext';
+import { useScore } from '@/app/context/ScoreContext';
 
 interface LessonItem {
     question: string;
@@ -77,7 +78,7 @@ export default function QuizClient({
     languageCode,
 }: QuizClientProps) {
     const router = useRouter();
-    const { score, setScore, hearts, setHearts, streak, setStreak } = useGlobalState();
+    const { incrementCorrect, incrementIncorrect } = useScore();
 
     // Initialize state from props passed by the Server Component
     const [lessonData, setLessonData] = useState<LessonData | null>(initialLessonData);
@@ -121,16 +122,9 @@ export default function QuizClient({
         setShowResult(true);
 
         if (correct) {
-            setScore(prevScore => prevScore + 10);
-            // Implement more robust streak logic if needed
-            // setStreak(prevStreak => prevStreak + 1);
+            incrementCorrect(languageCode);
         } else {
-            setHearts(prevHearts => Math.max(0, prevHearts - 1));
-            // setStreak(0);
-            if (hearts - 1 === 0) {
-                console.log("Game Over - No hearts left");
-                // Consider navigating to a game over screen or showing a modal
-            }
+            incrementIncorrect(languageCode);
         }
     };
 
@@ -270,9 +264,6 @@ export default function QuizClient({
                     >
                         {currentQuestionIndex < lessonData.lessons.length - 1 ? 'CONTINUE' : 'COMPLETE LESSON'}
                     </button>
-                    {hearts === 0 && !isCorrect && (
-                        <p className="text-red-500 font-semibold mt-4">You&apos;ve run out of hearts! Consider Game Over.</p>
-                    )}
                 </div>
             )}
         </div>
