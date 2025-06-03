@@ -71,7 +71,7 @@ export default function Page() {
         }
     }, [selectedLessonSet]);
 
-    const handleAnswerSelect = (answer) => {
+    const handleAnswerSelect = (answer: string) => {
         setSelectedAnswer(answer);
     };
 
@@ -120,53 +120,53 @@ export default function Page() {
     return (
         <div
             className="min-h-screen bg-gradient-to-br from-green-400 via-blue-500 to-purple-600"
-            data-oid="nvhfyra"
+            data-oid="ihpfqqd"
         >
             {/* Header */}
-            <header className="bg-white shadow-lg" data-oid=".5brmic">
+            <header className="bg-white shadow-lg" data-oid="k94g1q3">
                 <div
                     className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"
-                    data-oid="9_9mrb2"
+                    data-oid="h0pt.sa"
                 >
-                    <div className="flex items-center space-x-4" data-oid="9399xz5">
+                    <div className="flex items-center space-x-4" data-oid="vnck70.">
                         <div
                             className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center"
-                            data-oid="f1eu4_o"
+                            data-oid="d2nhrfx"
                         >
                             <span
                                 className="text-white font-bold text-xl rounded-[23px] w-[18px] h-[31px]"
-                                data-oid="_wfc8r."
+                                data-oid="zy3rft_"
                             >
                                 🦉
                             </span>
                         </div>
-                        <h1 className="text-2xl font-bold text-gray-800" data-oid="amki_01">
+                        <h1 className="text-2xl font-bold text-gray-800" data-oid="acjgxf-">
                             LinguaLearn
                         </h1>
                     </div>
 
-                    <div className="flex items-center space-x-6" data-oid="y:kilf_">
-                        <div className="flex items-center space-x-2" data-oid="6.x-1z0">
-                            <span className="text-orange-500" data-oid="f0caogz">
+                    <div className="flex items-center space-x-6" data-oid="avnx7wb">
+                        <div className="flex items-center space-x-2" data-oid="fn26fli">
+                            <span className="text-orange-500" data-oid="xhm0mdk">
                                 🔥
                             </span>
-                            <span className="font-bold text-gray-700" data-oid="qw8i0_0">
+                            <span className="font-bold text-gray-700" data-oid="v3ll9_y">
                                 {streak}
                             </span>
                         </div>
-                        <div className="flex items-center space-x-2" data-oid="be0-f8u">
-                            <span className="text-red-500" data-oid="hv6yu1h">
+                        <div className="flex items-center space-x-2" data-oid="qo505tg">
+                            <span className="text-red-500" data-oid="muuzla3">
                                 ❤️
                             </span>
-                            <span className="font-bold text-gray-700" data-oid="-n7rx5k">
+                            <span className="font-bold text-gray-700" data-oid="2fd97-e">
                                 {hearts}
                             </span>
                         </div>
-                        <div className="flex items-center space-x-2" data-oid="1wxh4x.">
-                            <span className="text-yellow-500" data-oid="y.p04s1">
+                        <div className="flex items-center space-x-2" data-oid="u:5n4rf">
+                            <span className="text-yellow-500" data-oid=".45yhor">
                                 ⭐
                             </span>
-                            <span className="font-bold text-gray-700" data-oid="yw.8ozt">
+                            <span className="font-bold text-gray-700" data-oid="3s.y6u6">
                                 {score}
                             </span>
                         </div>
@@ -175,16 +175,16 @@ export default function Page() {
             </header>
 
             {/* Progress Bar */}
-            <div className="bg-white border-b" data-oid=":opjrbq">
-                <div className="max-w-4xl mx-auto px-4 py-3" data-oid="0lri527">
-                    <div className="w-full bg-gray-200 rounded-full h-3" data-oid="og9mgcf">
+            <div className="bg-white border-b" data-oid=".bii7m5">
+                <div className="max-w-4xl mx-auto px-4 py-3" data-oid="0zakayu">
+                    <div className="w-full bg-gray-200 rounded-full h-3" data-oid="eqcuik3">
                         <div
                             className="bg-green-500 rounded-full transition-all duration-500 h-3"
                             style={{ width: `${progressPercentage}%` }}
-                            data-oid="7k7tlrm"
+                            data-oid="mq2.9_y"
                         ></div>
                     </div>
-                    <p className="text-sm text-gray-600 mt-2" data-oid="4pdrxg_">
+                    <p className="text-sm text-gray-600 mt-2" data-oid="4v-c24y">
                         {lessonData
                             ? `Lesson ${currentLesson + 1} of ${lessonData.lessons.length}`
                             : 'Select a lesson to begin'}
@@ -193,46 +193,46 @@ export default function Page() {
             </div>
 
             {/* Main Content */}
-            <main className="max-w-2xl mx-auto px-4 py-8" data-oid="npmi383">
-                <div className="bg-white rounded-2xl shadow-xl p-8" data-oid="-8hpzj4">
+            <main className="max-w-2xl mx-auto px-4 py-8" data-oid="k1sz56s">
+                <div className="bg-white rounded-2xl shadow-xl p-8" data-oid="nqdi-a:">
                     {!selectedLessonSet ? (
                         /* Lesson Selection Screen */
-                        <div className="text-center" data-oid="u1-68s3">
+                        <div className="text-center" data-oid="ftln4ms">
                             <h2
                                 className="text-3xl font-bold text-gray-800 mb-8"
-                                data-oid="98-xopj"
+                                data-oid=".dt56xj"
                             >
                                 Choose a Lesson
                             </h2>
-                            <div className="space-y-4" data-oid="z:.p4jm">
+                            <div className="space-y-4" data-oid="qkmbht2">
                                 {availableLessons.map((lesson) => (
                                     <button
                                         key={lesson.id}
                                         onClick={() => handleLessonSelect(lesson.id)}
                                         className="w-full p-6 text-left rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 group"
-                                        data-oid=":qfn_8."
+                                        data-oid="3o3ht_h"
                                     >
                                         <div
                                             className="flex items-center justify-between"
-                                            data-oid="_r6md0y"
+                                            data-oid="rs978cq"
                                         >
-                                            <div data-oid="aq77tw1">
+                                            <div data-oid="v.rfj4x">
                                                 <h3
                                                     className="text-xl font-bold text-gray-800 group-hover:text-blue-600"
-                                                    data-oid="oart-by"
+                                                    data-oid="ty.pdn0"
                                                 >
                                                     {lesson.title}
                                                 </h3>
                                                 <p
                                                     className="text-gray-600 mt-1"
-                                                    data-oid="t9adn1z"
+                                                    data-oid="y-fxku-"
                                                 >
                                                     Lesson {lesson.id}
                                                 </p>
                                             </div>
                                             <div
                                                 className="text-blue-500 text-2xl"
-                                                data-oid="ty:lhm5"
+                                                data-oid="lm:r37l"
                                             >
                                                 →
                                             </div>
@@ -243,11 +243,11 @@ export default function Page() {
                         </div>
                     ) : loading ? (
                         /* Loading Screen */
-                        <div className="text-center py-12" data-oid="6azh1:5">
-                            <div className="text-4xl mb-4" data-oid="c3ixv3s">
+                        <div className="text-center py-12" data-oid="atiaem5">
+                            <div className="text-4xl mb-4" data-oid="n_-s7zy">
                                 ⏳
                             </div>
-                            <h2 className="text-2xl font-bold text-gray-800" data-oid="uzqd1ym">
+                            <h2 className="text-2xl font-bold text-gray-800" data-oid="zckzert">
                                 Loading lesson...
                             </h2>
                         </div>
@@ -256,18 +256,18 @@ export default function Page() {
                         <>
                             <div
                                 className="flex items-center justify-between mb-6"
-                                data-oid="72ok5mp"
+                                data-oid="ul.dafc"
                             >
                                 <button
                                     onClick={handleBackToSelection}
                                     className="text-blue-500 hover:text-blue-600 font-medium"
-                                    data-oid="2qlfm20"
+                                    data-oid="gvhjxjg"
                                 >
                                     ← Back to Lessons
                                 </button>
                                 <h3
                                     className="text-lg font-semibold text-gray-600"
-                                    data-oid="3-id4hj"
+                                    data-oid="zqqil15"
                                 >
                                     {lessonData.title}
                                 </h3>
@@ -275,12 +275,12 @@ export default function Page() {
 
                             <h2
                                 className="text-2xl font-bold text-gray-800 mb-8 text-center"
-                                data-oid="s40vh6q"
+                                data-oid=":pl0gwj"
                             >
                                 {lessonData.lessons[currentLesson].question}
                             </h2>
 
-                            <div className="space-y-4" data-oid="sury0.g">
+                            <div className="space-y-4" data-oid="o4og.-t">
                                 {lessonData.lessons[currentLesson].options.map((option, index) => (
                                     <button
                                         key={index}
@@ -290,9 +290,9 @@ export default function Page() {
                                                 ? 'border-blue-500 bg-blue-50'
                                                 : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                                         }`}
-                                        data-oid=":ev0l50"
+                                        data-oid="ciruq20"
                                     >
-                                        <span className="text-lg font-medium" data-oid="k.de_hb">
+                                        <span className="text-lg font-medium" data-oid="p-uyfqk">
                                             {option}
                                         </span>
                                     </button>
@@ -307,43 +307,43 @@ export default function Page() {
                                         ? 'bg-green-500 hover:bg-green-600 text-white'
                                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                 }`}
-                                data-oid="wyodctz"
+                                data-oid="pp:-.hl"
                             >
                                 CHECK
                             </button>
                         </>
                     ) : lessonData && showResult ? (
                         /* Result Screen */
-                        <div className="text-center" data-oid="99x16cd">
+                        <div className="text-center" data-oid="8z6yuhb">
                             <div
                                 className={`text-6xl mb-4 ${isCorrect ? 'text-green-500' : 'text-red-500'}`}
-                                data-oid="fw2ed.7"
+                                data-oid="v964vzn"
                             >
                                 {isCorrect ? '🎉' : '😞'}
                             </div>
                             <h2
                                 className={`text-3xl font-bold mb-4 ${isCorrect ? 'text-green-600' : 'text-red-600'}`}
-                                data-oid="_y1mkei"
+                                data-oid="e_u1oda"
                             >
                                 {isCorrect ? 'Correct!' : 'Incorrect'}
                             </h2>
                             {!isCorrect && (
-                                <p className="text-gray-600 mb-6" data-oid="bkjz4zw">
+                                <p className="text-gray-600 mb-6" data-oid="eeb_-ma">
                                     The correct answer was:{' '}
-                                    <span className="font-bold" data-oid="tutg4i1">
+                                    <span className="font-bold" data-oid="w:ho584">
                                         {lessonData.lessons[currentLesson].correct}
                                     </span>
                                 </p>
                             )}
                             {isCorrect && (
-                                <p className="text-gray-600 mb-6" data-oid="wqmufy4">
+                                <p className="text-gray-600 mb-6" data-oid=":xbaxjh">
                                     +10 XP earned!
                                 </p>
                             )}
                             <button
                                 onClick={handleNext}
                                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200"
-                                data-oid="q1_zvt2"
+                                data-oid=":nfz5rx"
                             >
                                 {currentLesson < lessonData.lessons.length - 1
                                     ? 'CONTINUE'
@@ -356,31 +356,31 @@ export default function Page() {
                 {/* GitHub Pages Info */}
                 <div
                     className="mt-8 bg-white/10 backdrop-blur-sm rounded-xl p-6 text-white"
-                    data-oid="5m_bal3"
+                    data-oid="::g.4i0"
                 >
-                    <h3 className="text-lg font-bold mb-2" data-oid="8b3q57_">
+                    <h3 className="text-lg font-bold mb-2" data-oid="vwr28py">
                         🚀 Deploy on GitHub Pages
                     </h3>
-                    <p className="text-sm opacity-90" data-oid="uiu0a6w">
+                    <p className="text-sm opacity-90" data-oid="qvd:_qp">
                         This game runs entirely in the browser with no backend required. Perfect for
                         GitHub Pages deployment using GitHub Actions workflows!
                     </p>
-                    <div className="mt-4 flex flex-wrap gap-2" data-oid="qap8yei">
+                    <div className="mt-4 flex flex-wrap gap-2" data-oid="o5ocdn-">
                         <span
                             className="bg-white/20 px-3 py-1 rounded-full text-xs"
-                            data-oid="p24qc0x"
+                            data-oid="nxjd_2:"
                         >
                             No Registration
                         </span>
                         <span
                             className="bg-white/20 px-3 py-1 rounded-full text-xs"
-                            data-oid="t5gmpn1"
+                            data-oid="wefu7pt"
                         >
                             Client-Side Only
                         </span>
                         <span
                             className="bg-white/20 px-3 py-1 rounded-full text-xs"
-                            data-oid="_xwkkyx"
+                            data-oid="6tb_6ev"
                         >
                             GitHub Actions Ready
                         </span>
@@ -389,8 +389,8 @@ export default function Page() {
             </main>
 
             {/* Footer */}
-            <footer className="text-center py-8 text-white/80" data-oid="bytmejp">
-                <p className="text-sm" data-oid="xpg0ku-">
+            <footer className="text-center py-8 text-white/80" data-oid="s512pxe">
+                <p className="text-sm" data-oid="hwl6kow">
                     Built with React & Tailwind CSS • Ready for GitHub Pages deployment
                 </p>
             </footer>
