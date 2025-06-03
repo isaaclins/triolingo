@@ -7,7 +7,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish word for '[kitchen](kitchen)'.",
+      "question": "Type the Polish word for '[kitchen](kuchnia)'.",
       "correct": "kuchnia",
       "type": "fill-blank"
     },

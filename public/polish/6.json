@@ -7,7 +7,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish word for '[January](January)'.",
+      "question": "Type the Polish word for '[January](styczeń)'.",
       "correct": "styczeń",
       "type": "fill-blank"
     },

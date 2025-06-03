@@ -18,7 +18,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish word for '[milk](milk)'.",
+      "question": "Type the Polish word for '[milk](mleko)'.",
       "correct": "mleko",
       "type": "fill-blank"
     }

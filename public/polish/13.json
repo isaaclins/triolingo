@@ -7,7 +7,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish phrase for '[to swim](to swim)'.",
+      "question": "Type the Polish phrase for '[to swim](pływać)'.",
       "correct": "pływać",
       "type": "fill-blank"
     },

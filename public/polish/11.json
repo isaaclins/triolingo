@@ -7,7 +7,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish word for '[left](left)' (direction).",
+      "question": "Type the Polish word for '[left](lewo)' (direction).",
       "correct": "lewo",
       "type": "fill-blank"
     },

@@ -7,7 +7,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish word for '[shoes](shoes)'.",
+      "question": "Type the Polish word for '[shoes](buty)'.",
       "correct": "buty",
       "type": "fill-blank"
     },
