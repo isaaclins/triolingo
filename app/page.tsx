@@ -52,7 +52,8 @@ export default function Page() {
             const loadLessonData = async () => {
                 setLoading(true);
                 try {
-                    const response = await fetch(`/spanish/${selectedLessonSet}.json`);
+                    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+                    const response = await fetch(`${basePath}/spanish/${selectedLessonSet}.json`);
                     if (!response.ok) {
                         throw new Error('Failed to load lesson data');
                     }
@@ -120,53 +121,53 @@ export default function Page() {
     return (
         <div
             className="min-h-screen bg-gradient-to-br from-green-400 via-blue-500 to-purple-600"
-            data-oid="ihpfqqd"
+            data-oid="a3pj6q5"
         >
             {/* Header */}
-            <header className="bg-white shadow-lg" data-oid="k94g1q3">
+            <header className="bg-white shadow-lg" data-oid="m_tvu.9">
                 <div
                     className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between"
-                    data-oid="h0pt.sa"
+                    data-oid="rg.gwcr"
                 >
-                    <div className="flex items-center space-x-4" data-oid="vnck70.">
+                    <div className="flex items-center space-x-4" data-oid="o083s9k">
                         <div
                             className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center"
-                            data-oid="d2nhrfx"
+                            data-oid="mctyoz7"
                         >
                             <span
                                 className="text-white font-bold text-xl rounded-[23px] w-[18px] h-[31px]"
-                                data-oid="zy3rft_"
+                                data-oid="pqyaq91"
                             >
                                 🦉
                             </span>
                         </div>
-                        <h1 className="text-2xl font-bold text-gray-800" data-oid="acjgxf-">
+                        <h1 className="text-2xl font-bold text-gray-800" data-oid="nz46x-4">
                             TrioLingo
                         </h1>
                     </div>
 
-                    <div className="flex items-center space-x-6" data-oid="avnx7wb">
-                        <div className="flex items-center space-x-2" data-oid="fn26fli">
-                            <span className="text-orange-500" data-oid="xhm0mdk">
+                    <div className="flex items-center space-x-6" data-oid="f__sf-a">
+                        <div className="flex items-center space-x-2" data-oid="1et.zb2">
+                            <span className="text-orange-500" data-oid="rf8q-uy">
                                 🔥
                             </span>
-                            <span className="font-bold text-gray-700" data-oid="v3ll9_y">
+                            <span className="font-bold text-gray-700" data-oid="krr-uaj">
                                 {streak}
                             </span>
                         </div>
-                        <div className="flex items-center space-x-2" data-oid="qo505tg">
-                            <span className="text-red-500" data-oid="muuzla3">
+                        <div className="flex items-center space-x-2" data-oid="5olzq3y">
+                            <span className="text-red-500" data-oid="2g6z076">
                                 ❤️
                             </span>
-                            <span className="font-bold text-gray-700" data-oid="2fd97-e">
+                            <span className="font-bold text-gray-700" data-oid="y:_2eib">
                                 {hearts}
                             </span>
                         </div>
-                        <div className="flex items-center space-x-2" data-oid="u:5n4rf">
-                            <span className="text-yellow-500" data-oid=".45yhor">
+                        <div className="flex items-center space-x-2" data-oid="uxunn28">
+                            <span className="text-yellow-500" data-oid="tzmup47">
                                 ⭐
                             </span>
-                            <span className="font-bold text-gray-700" data-oid="3s.y6u6">
+                            <span className="font-bold text-gray-700" data-oid="xwnu-14">
                                 {score}
                             </span>
                         </div>
@@ -175,16 +176,16 @@ export default function Page() {
             </header>
 
             {/* Progress Bar */}
-            <div className="bg-white border-b" data-oid=".bii7m5">
-                <div className="max-w-4xl mx-auto px-4 py-3" data-oid="0zakayu">
-                    <div className="w-full bg-gray-200 rounded-full h-3" data-oid="eqcuik3">
+            <div className="bg-white border-b" data-oid="b4xwp5e">
+                <div className="max-w-4xl mx-auto px-4 py-3" data-oid="9ez9smi">
+                    <div className="w-full bg-gray-200 rounded-full h-3" data-oid="2zhl0xj">
                         <div
                             className="bg-green-500 rounded-full transition-all duration-500 h-3"
                             style={{ width: `${progressPercentage}%` }}
-                            data-oid="mq2.9_y"
+                            data-oid="qyun784"
                         ></div>
                     </div>
-                    <p className="text-sm text-gray-600 mt-2" data-oid="4v-c24y">
+                    <p className="text-sm text-gray-600 mt-2" data-oid="-8eml61">
                         {lessonData
                             ? `Lesson ${currentLesson + 1} of ${lessonData.lessons.length}`
                             : 'Select a lesson to begin'}
@@ -193,46 +194,46 @@ export default function Page() {
             </div>
 
             {/* Main Content */}
-            <main className="max-w-2xl mx-auto px-4 py-8" data-oid="k1sz56s">
-                <div className="bg-white rounded-2xl shadow-xl p-8" data-oid="nqdi-a:">
+            <main className="max-w-2xl mx-auto px-4 py-8" data-oid="xwgms7k">
+                <div className="bg-white rounded-2xl shadow-xl p-8" data-oid="ei.:tmw">
                     {!selectedLessonSet ? (
                         /* Lesson Selection Screen */
-                        <div className="text-center" data-oid="ftln4ms">
+                        <div className="text-center" data-oid="sg_.k2c">
                             <h2
                                 className="text-3xl font-bold text-gray-800 mb-8"
-                                data-oid=".dt56xj"
+                                data-oid="w7.2cqn"
                             >
                                 Choose a Lesson
                             </h2>
-                            <div className="space-y-4" data-oid="qkmbht2">
+                            <div className="space-y-4" data-oid="ll1_:iz">
                                 {availableLessons.map((lesson) => (
                                     <button
                                         key={lesson.id}
                                         onClick={() => handleLessonSelect(lesson.id)}
                                         className="w-full p-6 text-left rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 group"
-                                        data-oid="3o3ht_h"
+                                        data-oid="ric-7tt"
                                     >
                                         <div
                                             className="flex items-center justify-between"
-                                            data-oid="rs978cq"
+                                            data-oid="wgnksg-"
                                         >
-                                            <div data-oid="v.rfj4x">
+                                            <div data-oid="kjl6zca">
                                                 <h3
                                                     className="text-xl font-bold text-gray-800 group-hover:text-blue-600"
-                                                    data-oid="ty.pdn0"
+                                                    data-oid="os9fg:x"
                                                 >
                                                     {lesson.title}
                                                 </h3>
                                                 <p
                                                     className="text-gray-600 mt-1"
-                                                    data-oid="y-fxku-"
+                                                    data-oid="jvh8d-f"
                                                 >
                                                     Lesson {lesson.id}
                                                 </p>
                                             </div>
                                             <div
                                                 className="text-blue-500 text-2xl"
-                                                data-oid="lm:r37l"
+                                                data-oid="31yr-m_"
                                             >
                                                 →
                                             </div>
@@ -243,11 +244,11 @@ export default function Page() {
                         </div>
                     ) : loading ? (
                         /* Loading Screen */
-                        <div className="text-center py-12" data-oid="atiaem5">
-                            <div className="text-4xl mb-4" data-oid="n_-s7zy">
+                        <div className="text-center py-12" data-oid="341uch3">
+                            <div className="text-4xl mb-4" data-oid="tu_sdnw">
                                 ⏳
                             </div>
-                            <h2 className="text-2xl font-bold text-gray-800" data-oid="zckzert">
+                            <h2 className="text-2xl font-bold text-gray-800" data-oid="cdsvgs-">
                                 Loading lesson...
                             </h2>
                         </div>
@@ -256,18 +257,18 @@ export default function Page() {
                         <>
                             <div
                                 className="flex items-center justify-between mb-6"
-                                data-oid="ul.dafc"
+                                data-oid="f29xjq7"
                             >
                                 <button
                                     onClick={handleBackToSelection}
                                     className="text-blue-500 hover:text-blue-600 font-medium"
-                                    data-oid="gvhjxjg"
+                                    data-oid="mg-:9_y"
                                 >
                                     ← Back to Lessons
                                 </button>
                                 <h3
                                     className="text-lg font-semibold text-gray-600"
-                                    data-oid="zqqil15"
+                                    data-oid="5acqkm1"
                                 >
                                     {lessonData.title}
                                 </h3>
@@ -275,12 +276,12 @@ export default function Page() {
 
                             <h2
                                 className="text-2xl font-bold text-gray-800 mb-8 text-center"
-                                data-oid=":pl0gwj"
+                                data-oid="79-_zj8"
                             >
                                 {lessonData.lessons[currentLesson].question}
                             </h2>
 
-                            <div className="space-y-4" data-oid="o4og.-t">
+                            <div className="space-y-4" data-oid="87-:b69">
                                 {lessonData.lessons[currentLesson].options.map((option, index) => (
                                     <button
                                         key={index}
@@ -290,9 +291,9 @@ export default function Page() {
                                                 ? 'border-blue-500 bg-blue-50'
                                                 : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                                         }`}
-                                        data-oid="ciruq20"
+                                        data-oid="w2dk_vn"
                                     >
-                                        <span className="text-lg font-medium" data-oid="p-uyfqk">
+                                        <span className="text-lg font-medium" data-oid="qi1jj6n">
                                             {option}
                                         </span>
                                     </button>
@@ -307,43 +308,43 @@ export default function Page() {
                                         ? 'bg-green-500 hover:bg-green-600 text-white'
                                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                 }`}
-                                data-oid="pp:-.hl"
+                                data-oid="v6.bxz:"
                             >
                                 CHECK
                             </button>
                         </>
                     ) : lessonData && showResult ? (
                         /* Result Screen */
-                        <div className="text-center" data-oid="8z6yuhb">
+                        <div className="text-center" data-oid="btinp4v">
                             <div
                                 className={`text-6xl mb-4 ${isCorrect ? 'text-green-500' : 'text-red-500'}`}
-                                data-oid="v964vzn"
+                                data-oid="8:i4iiz"
                             >
                                 {isCorrect ? '🎉' : '😞'}
                             </div>
                             <h2
                                 className={`text-3xl font-bold mb-4 ${isCorrect ? 'text-green-600' : 'text-red-600'}`}
-                                data-oid="e_u1oda"
+                                data-oid="mw-anep"
                             >
                                 {isCorrect ? 'Correct!' : 'Incorrect'}
                             </h2>
                             {!isCorrect && (
-                                <p className="text-gray-600 mb-6" data-oid="eeb_-ma">
+                                <p className="text-gray-600 mb-6" data-oid="o2998lf">
                                     The correct answer was:{' '}
-                                    <span className="font-bold" data-oid="w:ho584">
+                                    <span className="font-bold" data-oid="dgnvf99">
                                         {lessonData.lessons[currentLesson].correct}
                                     </span>
                                 </p>
                             )}
                             {isCorrect && (
-                                <p className="text-gray-600 mb-6" data-oid=":xbaxjh">
+                                <p className="text-gray-600 mb-6" data-oid="6-g5d0b">
                                     +10 XP earned!
                                 </p>
                             )}
                             <button
                                 onClick={handleNext}
                                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200"
-                                data-oid=":nfz5rx"
+                                data-oid="j839s2s"
                             >
                                 {currentLesson < lessonData.lessons.length - 1
                                     ? 'CONTINUE'
@@ -356,31 +357,31 @@ export default function Page() {
                 {/* GitHub Pages Info */}
                 <div
                     className="mt-8 bg-white/10 backdrop-blur-sm rounded-xl p-6 text-white"
-                    data-oid="::g.4i0"
+                    data-oid="paxfqbs"
                 >
-                    <h3 className="text-lg font-bold mb-2" data-oid="vwr28py">
+                    <h3 className="text-lg font-bold mb-2" data-oid="hp8n_74">
                         🚀 Deploy on GitHub Pages
                     </h3>
-                    <p className="text-sm opacity-90" data-oid="qvd:_qp">
+                    <p className="text-sm opacity-90" data-oid="m0q00fq">
                         This game runs entirely in the browser with no backend required. Perfect for
                         GitHub Pages deployment using GitHub Actions workflows!
                     </p>
-                    <div className="mt-4 flex flex-wrap gap-2" data-oid="o5ocdn-">
+                    <div className="mt-4 flex flex-wrap gap-2" data-oid="2-q1x0u">
                         <span
                             className="bg-white/20 px-3 py-1 rounded-full text-xs"
-                            data-oid="nxjd_2:"
+                            data-oid="gjq93.m"
                         >
                             No Registration
                         </span>
                         <span
                             className="bg-white/20 px-3 py-1 rounded-full text-xs"
-                            data-oid="wefu7pt"
+                            data-oid="9a5auls"
                         >
                             Client-Side Only
                         </span>
                         <span
                             className="bg-white/20 px-3 py-1 rounded-full text-xs"
-                            data-oid="6tb_6ev"
+                            data-oid="8lfbtyx"
                         >
                             GitHub Actions Ready
                         </span>
@@ -389,8 +390,8 @@ export default function Page() {
             </main>
 
             {/* Footer */}
-            <footer className="text-center py-8 text-white/80" data-oid="s512pxe">
-                <p className="text-sm" data-oid="hwl6kow">
+            <footer className="text-center py-8 text-white/80" data-oid="pwl-ak1">
+                <p className="text-sm" data-oid="ybnr12s">
                     Built with React & Tailwind CSS • Ready for GitHub Pages deployment
                 </p>
             </footer>
