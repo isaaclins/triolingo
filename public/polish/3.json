@@ -1,0 +1,33 @@
+{
+    "title": "Introduction",
+    "lessons": [
+        {
+            "question": "What does 'Jak się nazywasz?' mean in English?",
+            "options": [
+                "How are you?",
+                "What is your name?",
+                "Where are you from?",
+                "How old are you?"
+            ],
+            "correct": "What is your name?",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Miło Cię poznać' mean in English?",
+            "options": ["Nice to meet you", "See you later", "Good morning", "Good night"],
+            "correct": "Nice to meet you",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Skąd jesteś?' mean in English?",
+            "options": [
+                "How are you?",
+                "What is your name?",
+                "Where are you from?",
+                "How old are you?"
+            ],
+            "correct": "Where are you from?",
+            "type": "multiple-choice"
+        }
+    ]
+}

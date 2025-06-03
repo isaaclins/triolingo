@@ -1,0 +1,23 @@
+{
+    "title": "Basic Greetings",
+    "lessons": [
+        {
+            "question": "What does 'Cześć' mean in English?",
+            "options": ["Hello", "Goodbye", "Thank you", "Please"],
+            "correct": "Hello",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Do widzenia' mean in English?",
+            "options": ["Hello", "Goodbye", "Thank you", "Please"],
+            "correct": "Goodbye",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Dziękuję' mean in English?",
+            "options": ["Hello", "Goodbye", "Thank you", "Please"],
+            "correct": "Thank you",
+            "type": "multiple-choice"
+        }
+    ]
+}

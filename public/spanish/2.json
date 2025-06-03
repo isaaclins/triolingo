@@ -18,6 +18,24 @@
             "options": ["pájaro", "pez", "ratón", "caballo"],
             "correct": "pájaro",
             "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Gato' mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Cat",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Perro' mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Dog",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Pájaro' mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Bird",
+            "type": "multiple-choice"
         }
     ]
 }

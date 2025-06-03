@@ -14,6 +14,12 @@ interface LessonSet {
     lessons: Lesson[];
 }
 
+interface Language {
+    code: string;
+    name: string;
+    flag: string;
+}
+
 export default function Page() {
     const [currentLesson, setCurrentLesson] = useState(0);
     const [score, setScore] = useState(0);
@@ -22,10 +28,18 @@ export default function Page() {
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [showResult, setShowResult] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
+    const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
     const [selectedLessonSet, setSelectedLessonSet] = useState<string | null>(null);
+    const [currentLanguage, setCurrentLanguage] = useState<string | null>(null);
     const [lessonData, setLessonData] = useState<LessonSet | null>(null);
     const [availableLessons, setAvailableLessons] = useState<{ id: string; title: string }[]>([]);
     const [loading, setLoading] = useState(false);
+
+    // Available languages
+    const availableLanguages: Language[] = [
+        { code: 'spanish', name: 'Spanish', flag: '🇪🇸' },
+        { code: 'polish', name: 'Polish', flag: '🇵🇱' },
+    ];
 
     // Load available lesson sets on component mount
     useEffect(() => {
@@ -48,12 +62,14 @@ export default function Page() {
 
     // Load selected lesson set
     useEffect(() => {
-        if (selectedLessonSet) {
+        if (selectedLessonSet && currentLanguage) {
             const loadLessonData = async () => {
                 setLoading(true);
                 try {
                     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-                    const response = await fetch(`${basePath}/spanish/${selectedLessonSet}.json`);
+                    const response = await fetch(
+                        `${basePath}/${currentLanguage}/${selectedLessonSet}.json`,
+                    );
                     if (!response.ok) {
                         throw new Error('Failed to load lesson data');
                     }
@@ -70,7 +86,7 @@ export default function Page() {
             };
             loadLessonData();
         }
-    }, [selectedLessonSet]);
+    }, [selectedLessonSet, currentLanguage]);
 
     const handleAnswerSelect = (answer: string) => {
         setSelectedAnswer(answer);
@@ -103,11 +119,34 @@ export default function Page() {
         }
     };
 
+    const handleLanguageToggle = (languageCode: string) => {
+        setSelectedLanguages((prev) => {
+            if (prev.includes(languageCode)) {
+                return prev.filter((lang) => lang !== languageCode);
+            } else {
+                return [...prev, languageCode];
+            }
+        });
+    };
+
+    const handleLanguageSelect = (languageCode: string) => {
+        setCurrentLanguage(languageCode);
+    };
+
     const handleLessonSelect = (lessonId: string) => {
         setSelectedLessonSet(lessonId);
     };
 
     const handleBackToSelection = () => {
+        setSelectedLessonSet(null);
+        setLessonData(null);
+        setCurrentLesson(0);
+        setSelectedAnswer('');
+        setShowResult(false);
+    };
+
+    const handleBackToLanguages = () => {
+        setCurrentLanguage(null);
         setSelectedLessonSet(null);
         setLessonData(null);
         setCurrentLesson(0);
@@ -196,31 +235,239 @@ export default function Page() {
             {/* Main Content */}
             <main className="max-w-2xl mx-auto px-4 py-8" data-oid="5fq2mfd">
                 <div className="bg-white rounded-2xl shadow-xl p-8" data-oid="upy6u:k">
-                    {!selectedLessonSet ? (
-                        /* Lesson Selection Screen */
+                    {selectedLanguages.length === 0 ? (
+                        /* Language Selection Screen */
                         <div className="text-center" data-oid="1lkfh_s">
                             <h2
-                                className="text-3xl font-bold text-gray-800 mb-8"
+                                className="text-3xl font-bold text-gray-800 mb-4"
                                 data-oid="rpm:q08"
                             >
-                                Choose a Lesson
+                                Select Languages to Learn
                             </h2>
+                            <p className="text-gray-600 mb-8" data-oid="ps72v82">
+                                Choose one or more languages you'd like to practice
+                            </p>
                             <div className="space-y-4" data-oid="ca9xm7-">
-                                {availableLessons.map((lesson) => (
+                                {availableLanguages.map((language) => (
                                     <button
-                                        key={lesson.id}
-                                        onClick={() => handleLessonSelect(lesson.id)}
-                                        className="w-full p-6 text-left rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 group"
+                                        key={language.code}
+                                        onClick={() => handleLanguageToggle(language.code)}
+                                        className={`w-full p-6 text-left rounded-xl border-2 transition-all duration-200 group ${
+                                            selectedLanguages.includes(language.code)
+                                                ? 'border-green-500 bg-green-50'
+                                                : 'border-gray-200 hover:border-blue-500 hover:bg-blue-50'
+                                        }`}
                                         data-oid="cak4-sl"
                                     >
                                         <div
                                             className="flex items-center justify-between"
                                             data-oid="edqzgvh"
                                         >
-                                            <div data-oid="gyxlc_j">
+                                            <div
+                                                className="flex items-center space-x-4"
+                                                data-oid="gyxlc_j"
+                                            >
+                                                <span className="text-3xl" data-oid="2p94:ih">
+                                                    {language.flag}
+                                                </span>
+                                                <div data-oid=".8gs4mf">
+                                                    <h3
+                                                        className={`text-xl font-bold ${
+                                                            selectedLanguages.includes(
+                                                                language.code,
+                                                            )
+                                                                ? 'text-green-600'
+                                                                : 'text-gray-800 group-hover:text-blue-600'
+                                                        }`}
+                                                        data-oid="8y31z73"
+                                                    >
+                                                        {language.name}
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div
+                                                className={`text-2xl ${
+                                                    selectedLanguages.includes(language.code)
+                                                        ? 'text-green-500'
+                                                        : 'text-blue-500'
+                                                }`}
+                                                data-oid="zn4kx3y"
+                                            >
+                                                {selectedLanguages.includes(language.code)
+                                                    ? '✓'
+                                                    : '+'}
+                                            </div>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                            {selectedLanguages.length > 0 && (
+                                <div className="mt-8" data-oid=":-eu1r4">
+                                    <h3
+                                        className="text-lg font-semibold text-gray-800 mb-4"
+                                        data-oid="xavu4r2"
+                                    >
+                                        Selected Languages:
+                                    </h3>
+                                    <div
+                                        className="flex flex-wrap gap-2 justify-center mb-6"
+                                        data-oid="61oajlb"
+                                    >
+                                        {selectedLanguages.map((langCode) => {
+                                            const language = availableLanguages.find(
+                                                (l) => l.code === langCode,
+                                            );
+                                            return (
+                                                <span
+                                                    key={langCode}
+                                                    className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1"
+                                                    data-oid="krxkqi-"
+                                                >
+                                                    <span data-oid="3z4yov-">{language?.flag}</span>
+                                                    <span data-oid="0dtmev8">{language?.name}</span>
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
+                                    <div className="space-y-3" data-oid="q-0huk9">
+                                        {selectedLanguages.map((langCode) => {
+                                            const language = availableLanguages.find(
+                                                (l) => l.code === langCode,
+                                            );
+                                            return (
+                                                <button
+                                                    key={langCode}
+                                                    onClick={() => handleLanguageSelect(langCode)}
+                                                    className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2"
+                                                    data-oid="9_z8acu"
+                                                >
+                                                    <span data-oid="9pesbqz">{language?.flag}</span>
+                                                    <span data-oid="sw-7ms:">
+                                                        Start Learning {language?.name}
+                                                    </span>
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    ) : !currentLanguage ? (
+                        /* Language Choice Screen */
+                        <div className="text-center" data-oid="3g54071">
+                            <h2
+                                className="text-3xl font-bold text-gray-800 mb-8"
+                                data-oid="13yxrj8"
+                            >
+                                Choose a Language
+                            </h2>
+                            <div className="space-y-4" data-oid="k0nodem">
+                                {selectedLanguages.map((langCode) => {
+                                    const language = availableLanguages.find(
+                                        (l) => l.code === langCode,
+                                    );
+                                    return (
+                                        <button
+                                            key={langCode}
+                                            onClick={() => handleLanguageSelect(langCode)}
+                                            className="w-full p-6 text-left rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 group"
+                                            data-oid="0ulvhqi"
+                                        >
+                                            <div
+                                                className="flex items-center justify-between"
+                                                data-oid="_-4br:1"
+                                            >
+                                                <div
+                                                    className="flex items-center space-x-4"
+                                                    data-oid="iiffku0"
+                                                >
+                                                    <span className="text-3xl" data-oid="e:8d.s4">
+                                                        {language?.flag}
+                                                    </span>
+                                                    <div data-oid="4x5pbw:">
+                                                        <h3
+                                                            className="text-xl font-bold text-gray-800 group-hover:text-blue-600"
+                                                            data-oid="aklrkp3"
+                                                        >
+                                                            {language?.name}
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className="text-blue-500 text-2xl"
+                                                    data-oid="_ipaarb"
+                                                >
+                                                    →
+                                                </div>
+                                            </div>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                            <button
+                                onClick={() => setSelectedLanguages([])}
+                                className="mt-6 text-blue-500 hover:text-blue-600 font-medium"
+                                data-oid="ldcxk96"
+                            >
+                                ← Back to Language Selection
+                            </button>
+                        </div>
+                    ) : !selectedLessonSet ? (
+                        /* Lesson Selection Screen */
+                        <div className="text-center" data-oid=".u1iyf0">
+                            <div
+                                className="flex items-center justify-between mb-6"
+                                data-oid="ua09kz5"
+                            >
+                                <button
+                                    onClick={handleBackToLanguages}
+                                    className="text-blue-500 hover:text-blue-600 font-medium"
+                                    data-oid="mgcsx2x"
+                                >
+                                    ← Back to Languages
+                                </button>
+                                <div className="flex items-center space-x-2" data-oid="gb.j-:2">
+                                    <span className="text-2xl" data-oid="y0z5tos">
+                                        {
+                                            availableLanguages.find(
+                                                (l) => l.code === currentLanguage,
+                                            )?.flag
+                                        }
+                                    </span>
+                                    <span
+                                        className="text-lg font-semibold text-gray-600"
+                                        data-oid="iygk.k5"
+                                    >
+                                        {
+                                            availableLanguages.find(
+                                                (l) => l.code === currentLanguage,
+                                            )?.name
+                                        }
+                                    </span>
+                                </div>
+                            </div>
+                            <h2
+                                className="text-3xl font-bold text-gray-800 mb-8"
+                                data-oid="b8yalgl"
+                            >
+                                Choose a Lesson
+                            </h2>
+                            <div className="space-y-4" data-oid="omos10z">
+                                {availableLessons.map((lesson) => (
+                                    <button
+                                        key={lesson.id}
+                                        onClick={() => handleLessonSelect(lesson.id)}
+                                        className="w-full p-6 text-left rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 group"
+                                        data-oid="l2rnm5a"
+                                    >
+                                        <div
+                                            className="flex items-center justify-between"
+                                            data-oid="ggjtybd"
+                                        >
+                                            <div data-oid=".yo4gbp">
                                                 <h3
                                                     className="text-xl font-bold text-gray-800 group-hover:text-blue-600"
-                                                    data-oid="8y31z73"
+                                                    data-oid="oxq3lla"
                                                 >
                                                     {lesson.title}
                                                 </h3>
@@ -233,7 +480,7 @@ export default function Page() {
                                             </div>
                                             <div
                                                 className="text-blue-500 text-2xl"
-                                                data-oid="zn4kx3y"
+                                                data-oid="3fojj_g"
                                             >
                                                 →
                                             </div>
@@ -266,12 +513,21 @@ export default function Page() {
                                 >
                                     ← Back to Lessons
                                 </button>
-                                <h3
-                                    className="text-lg font-semibold text-gray-600"
-                                    data-oid="hjn962d"
-                                >
-                                    {lessonData.title}
-                                </h3>
+                                <div className="flex items-center space-x-2" data-oid="i8dd5zq">
+                                    <span className="text-lg" data-oid="0nd3egk">
+                                        {
+                                            availableLanguages.find(
+                                                (l) => l.code === currentLanguage,
+                                            )?.flag
+                                        }
+                                    </span>
+                                    <h3
+                                        className="text-lg font-semibold text-gray-600"
+                                        data-oid="hjn962d"
+                                    >
+                                        {lessonData.title}
+                                    </h3>
+                                </div>
                             </div>
 
                             <h2

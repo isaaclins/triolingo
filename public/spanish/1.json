@@ -18,6 +18,24 @@
             "options": ["Hello", "Goodbye", "Thank you", "Please"],
             "correct": "Thank you",
             "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Hola' mean in English?",
+            "options": ["Hello", "Goodbye", "Thank you", "Please"],
+            "correct": "Hello",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Adiós' mean in English?",
+            "options": ["Hello", "Goodbye", "Thank you", "Please"],
+            "correct": "Goodbye",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Gracias' mean in English?",
+            "options": ["Hello", "Goodbye", "Thank you", "Please"],
+            "correct": "Thank you",
+            "type": "multiple-choice"
         }
     ]
 }

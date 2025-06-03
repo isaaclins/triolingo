@@ -1,0 +1,23 @@
+{
+    "title": "Animals",
+    "lessons": [
+        {
+            "question": "What does 'Kot' mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Cat",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Pies' mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Dog",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does 'Ptak' mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Bird",
+            "type": "multiple-choice"
+        }
+    ]
+}
