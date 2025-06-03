@@ -271,7 +271,7 @@ export default function QuizClient({
                         {currentQuestionIndex < lessonData.lessons.length - 1 ? 'CONTINUE' : 'COMPLETE LESSON'}
                     </button>
                     {hearts === 0 && !isCorrect && (
-                        <p className="text-red-500 font-semibold mt-4">You've run out of hearts! Consider Game Over.</p>
+                        <p className="text-red-500 font-semibold mt-4">You&apos;ve run out of hearts! Consider Game Over.</p>
                     )}
                 </div>
             )}

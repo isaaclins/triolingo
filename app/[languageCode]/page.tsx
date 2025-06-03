@@ -83,7 +83,7 @@ export default async function LessonSetSelectionPage({ params }: PageProps) {
                 <div className="text-4xl mb-4">❓</div>
                 <h2 className="text-2xl font-bold text-gray-800">Language Not Found</h2>
                 <p className="text-gray-600 mt-2">
-                    The language "{languageCode}" could not be found.
+                    The language &quot;{languageCode}&quot; could not be found.
                 </p>
                 <Link href="/" className="mt-6 inline-block text-blue-500 hover:text-blue-600 font-medium">
                     ← Back to Language Selection

@@ -81,7 +81,7 @@ export default function LanguageSelectionPage() {
                     Select a Language to Learn
                 </h2>
                 <p className="text-gray-600">
-                    Choose which language you'd like to practice today.
+                    Choose which language you&apos;d like to practice today.
                 </p>
             </div>
             <div className="space-y-4">
