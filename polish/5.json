@@ -7,7 +7,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish word for '[ten](ten)'.",
+      "question": "Type the Polish word for '[ten](dziesięć)'.",
       "correct": "dziesięć",
       "type": "fill-blank"
     },

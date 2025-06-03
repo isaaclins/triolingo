@@ -7,7 +7,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish adjective for '[beautiful](beautiful)' (feminine form).",
+      "question": "Type the Polish adjective for '[beautiful](piękna)' (feminine form).",
       "correct": "piękna",
       "type": "fill-blank"
     },

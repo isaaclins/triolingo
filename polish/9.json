@@ -7,7 +7,7 @@
       "type": "multiple-choice"
     },
     {
-      "question": "Type the Polish word for '[brother](brother)'.",
+      "question": "Type the Polish word for '[brother](brat)'.",
       "correct": "brat",
       "type": "fill-blank"
     },
