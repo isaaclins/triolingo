@@ -26,7 +26,7 @@ jobs:
             #   with:
             #     version: 8 # Specify your pnpm version
 
-            - name: Install Dependencies  zależności
+            - name: Install Dependencies
               # If using pnpm: run: pnpm install
               # If using yarn: run: yarn install --frozen-lockfile
               run: npm install # Assuming npm, change if you use yarn or pnpm

@@ -141,7 +141,7 @@ export default function Page() {
                             </span>
                         </div>
                         <h1 className="text-2xl font-bold text-gray-800" data-oid="acjgxf-">
-                            LinguaLearn
+                            TrioLingo
                         </h1>
                     </div>
 
