@@ -30,11 +30,11 @@ export default function Header() {
 
                 <div className="flex items-center space-x-6">
                     <div className="flex items-center space-x-2">
-                        <span className="text-orange-500">🔥</span>
+                        <span className="text-orange-500">Streak: 🔥</span>
                         <span className="font-bold text-gray-700">{streak}</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <span className="text-red-500">❤️</span>
+                        <span className="text-red-500">Hearts: ❤️</span>
                         <span className="font-bold text-gray-700">{hearts}</span>
                     </div>
                     {currentLanguageScore ? (
@@ -45,7 +45,7 @@ export default function Header() {
                         </div>
                     ) : (
                         <div className="flex items-center space-x-2">
-                            {/* <span className="text-yellow-500">⭐</span> */}
+                            {/* <span className="text-yellow-500"> Score: ⭐</span> */}
                             {/* <span className="font-bold text-gray-700">{useGlobalState().score}</span> */}
                         </div>
                     )}
