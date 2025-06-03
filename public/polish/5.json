@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What is '[jeden](one)' + '[dwa](two)'?",
+      "options": ["trzy", "cztery", "pięć"],
+      "correct": "trzy",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish word for '[ten](ten)'.",
+      "correct": "dziesięć",
+      "type": "fill-blank"
+    },
+    {
+      "question": "Which [liczba](number) comes after '[siedem](seven)'?",
+      "options": ["osiem", "dziewięć", "sześć"],
+      "correct": "osiem",
+      "type": "multiple-choice"
+    }
+  ]
+} 

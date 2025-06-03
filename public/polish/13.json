@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "'[Czytać](To read) [książki](books)' is a common [hobby](hobby). What does '[czytać książki](to read books)' mean?",
+      "options": ["To watch movies", "To play games", "To read books"],
+      "correct": "To read books",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish phrase for '[to swim](to swim)'.",
+      "correct": "pływać",
+      "type": "fill-blank"
+    },
+    {
+      "question": "If you enjoy '[grać na gitarze](playing the guitar)', what [instrument](instrument) do you play?",
+      "options": ["Piano", "Guitar", "Drums"],
+      "correct": "Guitar",
+      "type": "multiple-choice"
+    }
+  ]
+} 

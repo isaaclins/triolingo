@@ -1,5 +1,15 @@
 [
   { "id": "1", "title": "Basic Greetings" },
   { "id": "2", "title": "Animals" },
-  { "id": "3", "title": "Introduction" }
+  { "id": "3", "title": "Introduction" },
+  { "id": "4", "title": "Food and Drinks" },
+  { "id": "5", "title": "Numbers and Counting" },
+  { "id": "6", "title": "Days of the Week and Months" },
+  { "id": "7", "title": "Common Verbs" },
+  { "id": "8", "title": "Adjectives and Describing Things" },
+  { "id": "9", "title": "Family Members" },
+  { "id": "10", "title": "Around the House" },
+  { "id": "11", "title": "Travel and Directions" },
+  { "id": "12", "title": "Clothing" },
+  { "id": "13", "title": "Hobbies and Activities" }
 ] 

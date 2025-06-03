@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What [dzień](day) of the [tydzień](week) is '[poniedziałek](Monday)'?",
+      "options": ["Monday", "Tuesday", "Sunday"],
+      "correct": "Monday",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish word for '[January](January)'.",
+      "correct": "styczeń",
+      "type": "fill-blank"
+    },
+    {
+      "question": "'[Piątek](Friday)' is before '[sobota](Saturday)'. What is '[piątek](Friday)'?",
+      "options": ["Thursday", "Friday", "Weekend"],
+      "correct": "Friday",
+      "type": "multiple-choice"
+    }
+  ]
+} 
