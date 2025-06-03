@@ -1,0 +1,23 @@
+{
+    "title": "Introduction",
+    "lessons": [
+        {
+            "question": "Complete: 'Me llamo ___'",
+            "options": ["es", "soy", "Maria", "tengo"],
+            "correct": "Maria",
+            "type": "fill-blank"
+        },
+        {
+            "question": "Complete: 'Yo ___ estudiante'",
+            "options": ["es", "soy", "eres", "son"],
+            "correct": "soy",
+            "type": "fill-blank"
+        },
+        {
+            "question": "Complete: '¿Cómo te ___?'",
+            "options": ["llamas", "llamo", "llama", "llamamos"],
+            "correct": "llamas",
+            "type": "fill-blank"
+        }
+    ]
+}

@@ -2,6 +2,18 @@
 
 import { useState, useEffect } from 'react';
 
+interface Lesson {
+    question: string;
+    options: string[];
+    correct: string;
+    type: string;
+}
+
+interface LessonSet {
+    title: string;
+    lessons: Lesson[];
+}
+
 export default function Page() {
     const [currentLesson, setCurrentLesson] = useState(0);
     const [score, setScore] = useState(0);
@@ -10,34 +22,63 @@ export default function Page() {
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [showResult, setShowResult] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
+    const [selectedLessonSet, setSelectedLessonSet] = useState<string | null>(null);
+    const [lessonData, setLessonData] = useState<LessonSet | null>(null);
+    const [availableLessons, setAvailableLessons] = useState<{ id: string; title: string }[]>([]);
+    const [loading, setLoading] = useState(false);
 
-    const lessons = [
-        {
-            question: "What does 'Hola' mean in English?",
-            options: ['Hello', 'Goodbye', 'Thank you', 'Please'],
-            correct: 'Hello',
-            type: 'multiple-choice',
-        },
-        {
-            question: "Choose the correct translation for 'cat':",
-            options: ['perro', 'gato', 'casa', 'agua'],
-            correct: 'gato',
-            type: 'multiple-choice',
-        },
-        {
-            question: "Complete: 'Me llamo ___'",
-            options: ['es', 'soy', 'Maria', 'tengo'],
-            correct: 'Maria',
-            type: 'fill-blank',
-        },
-    ];
+    // Load available lesson sets on component mount
+    useEffect(() => {
+        const loadAvailableLessons = async () => {
+            try {
+                // For now, we'll hardcode the available lessons since we can't dynamically read directory contents in the browser
+                const lessons = [
+                    { id: '1', title: 'Basic Greetings' },
+                    { id: '2', title: 'Animals' },
+                    { id: '3', title: 'Introduction' },
+                ];
+
+                setAvailableLessons(lessons);
+            } catch (error) {
+                console.error('Error loading available lessons:', error);
+            }
+        };
+        loadAvailableLessons();
+    }, []);
+
+    // Load selected lesson set
+    useEffect(() => {
+        if (selectedLessonSet) {
+            const loadLessonData = async () => {
+                setLoading(true);
+                try {
+                    const response = await fetch(`/spanish/${selectedLessonSet}.json`);
+                    if (!response.ok) {
+                        throw new Error('Failed to load lesson data');
+                    }
+                    const data: LessonSet = await response.json();
+                    setLessonData(data);
+                    setCurrentLesson(0);
+                    setSelectedAnswer('');
+                    setShowResult(false);
+                } catch (error) {
+                    console.error('Error loading lesson data:', error);
+                } finally {
+                    setLoading(false);
+                }
+            };
+            loadLessonData();
+        }
+    }, [selectedLessonSet]);
 
     const handleAnswerSelect = (answer) => {
         setSelectedAnswer(answer);
     };
 
     const handleSubmit = () => {
-        const correct = selectedAnswer === lessons[currentLesson].correct;
+        if (!lessonData) return;
+
+        const correct = selectedAnswer === lessonData.lessons[currentLesson].correct;
         setIsCorrect(correct);
         setShowResult(true);
 
@@ -51,14 +92,30 @@ export default function Page() {
     const handleNext = () => {
         setShowResult(false);
         setSelectedAnswer('');
-        if (currentLesson < lessons.length - 1) {
+        if (lessonData && currentLesson < lessonData.lessons.length - 1) {
             setCurrentLesson(currentLesson + 1);
         } else {
-            setCurrentLesson(0); // Reset for demo
+            // Lesson set completed, go back to lesson selection
+            setSelectedLessonSet(null);
+            setLessonData(null);
+            setCurrentLesson(0);
         }
     };
 
-    const progressPercentage = ((currentLesson + 1) / lessons.length) * 100;
+    const handleLessonSelect = (lessonId: string) => {
+        setSelectedLessonSet(lessonId);
+    };
+
+    const handleBackToSelection = () => {
+        setSelectedLessonSet(null);
+        setLessonData(null);
+        setCurrentLesson(0);
+        setSelectedAnswer('');
+        setShowResult(false);
+    };
+
+    // Calculate progress percentage - starts at 0% and fills up as lessons are completed
+    const progressPercentage = lessonData ? (currentLesson / lessonData.lessons.length) * 100 : 0;
 
     return (
         <div
@@ -122,13 +179,15 @@ export default function Page() {
                 <div className="max-w-4xl mx-auto px-4 py-3" data-oid="0lri527">
                     <div className="w-full bg-gray-200 rounded-full h-3" data-oid="og9mgcf">
                         <div
-                            className="bg-green-500 rounded-full transition-all duration-500 w-[44px] h-[13px]"
+                            className="bg-green-500 rounded-full transition-all duration-500 h-3"
                             style={{ width: `${progressPercentage}%` }}
                             data-oid="7k7tlrm"
                         ></div>
                     </div>
                     <p className="text-sm text-gray-600 mt-2" data-oid="4pdrxg_">
-                        Lesson {currentLesson + 1} of {lessons.length}
+                        {lessonData
+                            ? `Lesson ${currentLesson + 1} of ${lessonData.lessons.length}`
+                            : 'Select a lesson to begin'}
                     </p>
                 </div>
             </div>
@@ -136,17 +195,93 @@ export default function Page() {
             {/* Main Content */}
             <main className="max-w-2xl mx-auto px-4 py-8" data-oid="npmi383">
                 <div className="bg-white rounded-2xl shadow-xl p-8" data-oid="-8hpzj4">
-                    {!showResult ? (
+                    {!selectedLessonSet ? (
+                        /* Lesson Selection Screen */
+                        <div className="text-center" data-oid="u1-68s3">
+                            <h2
+                                className="text-3xl font-bold text-gray-800 mb-8"
+                                data-oid="98-xopj"
+                            >
+                                Choose a Lesson
+                            </h2>
+                            <div className="space-y-4" data-oid="z:.p4jm">
+                                {availableLessons.map((lesson) => (
+                                    <button
+                                        key={lesson.id}
+                                        onClick={() => handleLessonSelect(lesson.id)}
+                                        className="w-full p-6 text-left rounded-xl border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 group"
+                                        data-oid=":qfn_8."
+                                    >
+                                        <div
+                                            className="flex items-center justify-between"
+                                            data-oid="_r6md0y"
+                                        >
+                                            <div data-oid="aq77tw1">
+                                                <h3
+                                                    className="text-xl font-bold text-gray-800 group-hover:text-blue-600"
+                                                    data-oid="oart-by"
+                                                >
+                                                    {lesson.title}
+                                                </h3>
+                                                <p
+                                                    className="text-gray-600 mt-1"
+                                                    data-oid="t9adn1z"
+                                                >
+                                                    Lesson {lesson.id}
+                                                </p>
+                                            </div>
+                                            <div
+                                                className="text-blue-500 text-2xl"
+                                                data-oid="ty:lhm5"
+                                            >
+                                                →
+                                            </div>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    ) : loading ? (
+                        /* Loading Screen */
+                        <div className="text-center py-12" data-oid="6azh1:5">
+                            <div className="text-4xl mb-4" data-oid="c3ixv3s">
+                                ⏳
+                            </div>
+                            <h2 className="text-2xl font-bold text-gray-800" data-oid="uzqd1ym">
+                                Loading lesson...
+                            </h2>
+                        </div>
+                    ) : lessonData && !showResult ? (
+                        /* Question Screen */
                         <>
+                            <div
+                                className="flex items-center justify-between mb-6"
+                                data-oid="72ok5mp"
+                            >
+                                <button
+                                    onClick={handleBackToSelection}
+                                    className="text-blue-500 hover:text-blue-600 font-medium"
+                                    data-oid="2qlfm20"
+                                >
+                                    ← Back to Lessons
+                                </button>
+                                <h3
+                                    className="text-lg font-semibold text-gray-600"
+                                    data-oid="3-id4hj"
+                                >
+                                    {lessonData.title}
+                                </h3>
+                            </div>
+
                             <h2
                                 className="text-2xl font-bold text-gray-800 mb-8 text-center"
                                 data-oid="s40vh6q"
                             >
-                                {lessons[currentLesson].question}
+                                {lessonData.lessons[currentLesson].question}
                             </h2>
 
                             <div className="space-y-4" data-oid="sury0.g">
-                                {lessons[currentLesson].options.map((option, index) => (
+                                {lessonData.lessons[currentLesson].options.map((option, index) => (
                                     <button
                                         key={index}
                                         onClick={() => handleAnswerSelect(option)}
@@ -177,7 +312,8 @@ export default function Page() {
                                 CHECK
                             </button>
                         </>
-                    ) : (
+                    ) : lessonData && showResult ? (
+                        /* Result Screen */
                         <div className="text-center" data-oid="99x16cd">
                             <div
                                 className={`text-6xl mb-4 ${isCorrect ? 'text-green-500' : 'text-red-500'}`}
@@ -195,7 +331,7 @@ export default function Page() {
                                 <p className="text-gray-600 mb-6" data-oid="bkjz4zw">
                                     The correct answer was:{' '}
                                     <span className="font-bold" data-oid="tutg4i1">
-                                        {lessons[currentLesson].correct}
+                                        {lessonData.lessons[currentLesson].correct}
                                     </span>
                                 </p>
                             )}
@@ -209,10 +345,12 @@ export default function Page() {
                                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200"
                                 data-oid="q1_zvt2"
                             >
-                                CONTINUE
+                                {currentLesson < lessonData.lessons.length - 1
+                                    ? 'CONTINUE'
+                                    : 'COMPLETE LESSON'}
                             </button>
                         </div>
-                    )}
+                    ) : null}
                 </div>
 
                 {/* GitHub Pages Info */}
