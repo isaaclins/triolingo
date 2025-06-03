@@ -89,9 +89,10 @@
 
 /* Add styles for hoverable words and tooltips */
 .hoverable-word {
+  color: #3b82f6; /* Tailwind's blue-500, for example - more vibrant */
   text-decoration: underline dotted;
-  text-decoration-color: #60a5fa; /* A blue color, adjust as needed */
-  text-underline-offset: 2px;
+  text-decoration-color: #3b82f6; /* Match the text color */
+  text-underline-offset: 3px; /* Slightly more offset */
   position: relative; /* For positioning the tooltip */
   cursor: help;
 }
