@@ -1,0 +1,117 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# TrioLingo Project Structure & Architecture
+
+## 1. Overview
+
+TrioLingo is a language learning application built with Next.js (App Router), React, and Tailwind CSS. The primary goal is to provide users with a modular and extensible platform for learning various languages through interactive lessons.
+
+## 2. Core Technologies
+
+-   **Framework:** Next.js (using the App Router)
+-   **UI Library:** React
+-   **Styling:** Tailwind CSS
+-   **Data Format:** JSON for language and lesson definitions
+
+## 3. Data Management & Modularity
+
+The application's content (languages and lessons) is designed to be highly modular and data-driven, primarily through JSON files located in the `public` directory.
+
+### 3.1. Language Definitions
+-   **File:** `[public/languages.json](mdc:public/languages.json)`
+-   **Purpose:** Defines all available languages the user can learn.
+-   **Structure:** An array of language objects. Each object contains:
+    -   `code`: A unique string identifier for the language (e.g., "spanish", "polish").
+    -   `name`: The display name of the language (e.g., "Spanish").
+    -   `flag`: An emoji or path to an image for the language's flag (e.g., "🇪🇸").
+-   **Example:**
+    ```json
+    [
+      { "code": "spanish", "name": "Spanish", "flag": "🇪🇸" },
+      { "code": "polish", "name": "Polish", "flag": "🇵🇱" }
+    ]
+    ```
+
+### 3.2. Lesson Set Listings (Per Language)
+-   **File Pattern:** `[public/{languageCode}/lessons.json](mdc:public/{languageCode}/lessons.json)` (e.g., `[public/spanish/lessons.json](mdc:public/spanish/lessons.json)`)
+-   **Purpose:** Lists all available lesson sets for a specific language.
+-   **Structure:** An array of lesson set objects. Each object contains:
+    -   `id`: A unique string or number identifier for the lesson set (e.g., "1", "2"). This ID will match the filename of the detailed lesson content.
+    -   `title`: The display title of the lesson set (e.g., "Basic Greetings").
+-   **Example (`[public/spanish/lessons.json](mdc:public/spanish/lessons.json)`):
+    ```json
+    [
+      { "id": "1", "title": "Basic Greetings" },
+      { "id": "2", "title": "Animals" }
+    ]
+    ```
+
+### 3.3. Detailed Lesson Content (Per Lesson Set)
+-   **File Pattern:** `[public/{languageCode}/{lessonSetId}.json](mdc:public/{languageCode}/{lessonSetId}.json)` (e.g., `[public/spanish/1.json](mdc:public/spanish/1.json)`)
+-   **Purpose:** Contains the actual questions, options, and correct answers for a specific lesson set. The `title` field within these files will be deprecated/ignored, as the title is now sourced from `lessons.json`.
+-   **Structure:** An object containing a `lessons` array. Each item in the `lessons` array represents a single question/task and includes:
+    -   `question`: The question prompt.
+    -   `options`: An array of possible answers (for multiple-choice type).
+    -   `correct`: The correct answer.
+    -   `type`: A string indicating the question type (e.g., "multiple-choice"). This will be used to render different question formats (e.g., multiple choice, typed input) and potentially apply different difficulty scoring.
+    -   (Future) `difficulty`: A numerical value (e.g., 1-3) indicating the difficulty of the question.
+-   **Example (`[public/spanish/1.json](mdc:public/spanish/1.json)`):
+    ```json
+    {
+      "lessons": [
+        {
+          "question": "Which of these means 'Hello' in Spanish?",
+          "options": ["Adiós", "Hola", "Gracias", "Por favor"],
+          "correct": "Hola",
+          "type": "multiple-choice"
+        }
+        // ... more lesson items
+      ]
+    }
+    ```
+
+## 4. Routing Structure (Next.js App Router)
+
+The application will use a clear, hierarchical routing structure:
+
+-   **`/[app/page.tsx](mdc:app/page.tsx)` (Root Route: `/`)**
+    -   **Purpose:** Language Selection Page.
+    -   **Functionality:** Fetches and displays available languages from `[public/languages.json](mdc:public/languages.json)`. Allows the user to select a single language to learn, which then navigates them to `/{languageCode}`.
+
+-   **`[app/[languageCode]/page.tsx](mdc:app/[languageCode]/page.tsx)` (Dynamic Route: `/{languageCode}`)**
+    -   **Purpose:** Lesson Set Selection Page for the chosen language.
+    -   **Functionality:**
+        -   Receives `languageCode` as a URL parameter.
+        -   Fetches and displays available lesson sets for that language from `[public/{languageCode}/lessons.json](mdc:public/{languageCode}/lessons.json)`.
+        -   Allows the user to select a lesson set, navigating them to `/{languageCode}/{lessonSetId}`.
+
+-   **`[app/[languageCode]/[lessonSetId]/page.tsx](mdc:app/[languageCode]/[lessonSetId]/page.tsx)` (Dynamic Route: `/{languageCode}/{lessonSetId}`)**
+    -   **Purpose:** Quiz/Lesson Interface Page.
+    -   **Functionality:**
+        -   Receives `languageCode` and `lessonSetId` as URL parameters.
+        -   Fetches the detailed lesson data from `[public/{languageCode}/{lessonSetId}.json](mdc:public/{languageCode}/{lessonSetId}.json)`.
+        -   Manages the quiz flow: displaying questions, handling user answers, providing feedback, updating score/hearts/streak, and navigating between questions or to a completion state.
+
+## 5. State Management
+
+-   **Global State (Score, Hearts, Streak):**
+    -   Will be managed using a React Context (`GlobalStateContext` or similar).
+    -   This context provider will wrap the page components in `[app/layout.tsx](mdc:app/layout.tsx)` or a shared layout component to make the state accessible to the `Header` and any relevant pages.
+-   **Local State:** Individual pages and components will manage their own local UI state as needed.
+
+## 6. Key Components (Conceptual)
+
+-   **`Header`:** A shared component (likely in `[app/layout.tsx](mdc:app/layout.tsx)` or a client component imported there) displaying the application title/logo and global user stats (score, hearts, streak) sourced from the `GlobalStateContext`.
+-   **`LanguageSelectionPage`:** Component for `app/page.tsx`.
+-   **`LessonSetSelectionPage`:** Component for `app/[languageCode]/page.tsx`.
+-   **`LessonQuizPage`:** Component for `app/[languageCode]/[lessonSetId]/page.tsx`.
+
+## 7. Future Considerations
+
+-   **Enhanced Question Types:** The `type` field in lesson data will facilitate the introduction of varied question formats (e.g., typed text input, matching pairs) beyond simple multiple-choice.
+-   **Difficulty System:** A `difficulty` field per lesson item can be used to implement adaptive learning paths or varied scoring.
+-   **Backend Integration:** For persistent user data (progress, scores, preferences), a backend system will eventually be integrated. For now, global state is client-side.
+-   **Accessibility and UI/UX:** Continuous improvements to ensure the application is accessible and user-friendly.
