@@ -88,13 +88,26 @@
 }
 
 /* Add styles for hoverable words and tooltips */
+/* Default styles for hoverable words (desktop-first inspired) */
 .hoverable-word {
-  color: #3b82f6; /* Tailwind's blue-500, for example - more vibrant */
+  color: #3b82f6; /* Tailwind's blue-500 */
   text-decoration: underline dotted;
   text-decoration-color: #3b82f6; /* Match the text color */
-  text-underline-offset: 3px; /* Slightly more offset */
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px; /* Default thickness */
   position: relative; /* For positioning the tooltip */
   cursor: help;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+/* Styles for mobile devices to make it even clearer */
+@media (max-width: 767px) { /* Targets screens < 768px */
+  .hoverable-word {
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px; /* Slightly thicker solid underline for mobile */
+    /* For example, you could also make it bolder on mobile if desired: */
+    /* font-weight: 600; */ 
+  }
 }
 
 .hoverable-word::after {
