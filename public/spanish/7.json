@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "Where do you typically [cook](cocinar) [food](comida) in a [house](casa)?",
+      "options": ["el baño (bathroom)", "la cocina (kitchen)", "el dormitorio (bedroom)"],
+      "correct": "la cocina (kitchen)",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "A [place](lugar) with a [bed](cama) to [sleep](dormir) is called a '[dormitorio](bedroom)'. Type 'dormitorio'.",
+      "correct": "dormitorio",
+      "type": "fill-blank"
+    },
+    {
+      "question": "What is a '[ventana](window)' in English?",
+      "options": ["door", "window", "roof"],
+      "correct": "window",
+      "type": "multiple-choice"
+    }
+  ]
+} 

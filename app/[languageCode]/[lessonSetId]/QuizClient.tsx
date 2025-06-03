@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useGlobalState } from '@/app/context/GlobalStateContext';
@@ -34,6 +34,41 @@ interface QuizClientProps {
     languageCode: string; // Passed for navigation
     lessonSetId: string; // Passed for context, though data is pre-fetched
 }
+
+// Helper function to parse the question string for hoverable words
+const parseQuestionString = (question: string): (string | JSX.Element)[] => {
+    const parts = [];
+    let lastIndex = 0;
+    const regex = /\[([^\]]+)\]\(([^)]+)\)/g; // Matches [word](definition)
+    let match;
+
+    while ((match = regex.exec(question)) !== null) {
+        // Add text before the match
+        if (match.index > lastIndex) {
+            parts.push(question.substring(lastIndex, match.index));
+        }
+        // Add the hoverable word
+        const word = match[1];
+        const definition = match[2];
+        parts.push(
+            <span 
+                key={`${word}-${match.index}`} 
+                className="hoverable-word"
+                data-definition={definition}
+            >
+                {word}
+            </span>
+        );
+        lastIndex = regex.lastIndex;
+    }
+
+    // Add any remaining text after the last match
+    if (lastIndex < question.length) {
+        parts.push(question.substring(lastIndex));
+    }
+    
+    return parts.length > 0 ? parts : [question]; // Return original string if no matches
+};
 
 export default function QuizClient({
     initialLessonData,
@@ -126,6 +161,8 @@ export default function QuizClient({
         );
     }
 
+    const parsedQuestion = parseQuestionString(currentLessonItem.question);
+
     return (
         <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="mb-6">
@@ -152,7 +189,9 @@ export default function QuizClient({
                         </div>
                     </div>
                     <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center min-h-[60px]">
-                        {currentLessonItem.question}
+                        {parsedQuestion.map((part, index) => (
+                            <Fragment key={index}>{part}</Fragment>
+                        ))}
                     </h2>
                     {currentLessonItem.type === 'multiple-choice' && currentLessonItem.options && (
                         <div className="space-y-3">

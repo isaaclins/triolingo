@@ -1,39 +1,39 @@
 {
     "lessons": [
         {
-            "question": "What does 'Hola' mean in English?",
+            "question": "What does '[Hola](Hello)' mean in English?",
             "options": ["Hello", "Goodbye", "Thank you", "Please"],
             "correct": "Hello",
             "type": "multiple-choice"
         },
         {
-            "question": "What does 'Adiós' mean in English?",
+            "question": "What does '[Adiós](Goodbye)' mean in English?",
             "options": ["Hello", "Goodbye", "Thank you", "Please"],
             "correct": "Goodbye",
             "type": "multiple-choice"
         },
         {
-            "question": "What does 'Gracias' mean in English?",
+            "question": "What does '[Gracias](Thank you)' mean in English?",
             "options": ["Hello", "Goodbye", "Thank you", "Please"],
             "correct": "Thank you",
             "type": "multiple-choice"
         },
         {
-            "question": "What does 'Hola' mean in English?",
+            "question": "What does '[Por favor](Please)' mean in English?", 
             "options": ["Hello", "Goodbye", "Thank you", "Please"],
-            "correct": "Hello",
+            "correct": "Please",
             "type": "multiple-choice"
         },
         {
-            "question": "What does 'Adiós' mean in English?",
-            "options": ["Hello", "Goodbye", "Thank you", "Please"],
-            "correct": "Goodbye",
+            "question": "'[De nada](You're welcome)' is a common reply to 'Gracias'. What does it mean in English?",
+            "options": ["Hello", "You're welcome", "Excuse me", "Good night"],
+            "correct": "You're welcome",
             "type": "multiple-choice"
         },
         {
-            "question": "What does 'Gracias' mean in English?",
-            "options": ["Hello", "Goodbye", "Thank you", "Please"],
-            "correct": "Thank you",
+            "question": "How do you say 'Good morning' in Spanish?",
+            "options": ["Buenos días", "Buenas tardes", "Buenas noches", "Hola"],
+            "correct": "Buenos días",
             "type": "multiple-choice"
         }
     ]

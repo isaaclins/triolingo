@@ -1,31 +1,21 @@
 {
     "lessons": [
         {
-            "question": "What does 'Jak się nazywasz?' mean in English?",
-            "options": [
-                "How are you?",
-                "What is your name?",
-                "Where are you from?",
-                "How old are you?"
-            ],
-            "correct": "What is your name?",
+            "question": "What is 'Jak się masz?' in English?",
+            "options": ["How are you?", "What is your name?", "My name is", "Goodbye"],
+            "correct": "How are you?",
             "type": "multiple-choice"
         },
         {
-            "question": "What does 'Miło Cię poznać' mean in English?",
-            "options": ["Nice to meet you", "See you later", "Good morning", "Good night"],
-            "correct": "Nice to meet you",
+            "question": "Translate: 'Mam na imię Ania.'",
+            "options": ["My name is Ania.", "I am Ania.", "Her name is Ania.", "His name is Ania."],
+            "correct": "My name is Ania.",
             "type": "multiple-choice"
         },
         {
-            "question": "What does 'Skąd jesteś?' mean in English?",
-            "options": [
-                "How are you?",
-                "What is your name?",
-                "Where are you from?",
-                "How old are you?"
-            ],
-            "correct": "Where are you from?",
+            "question": "What does 'Chłopcy' mean in English?",
+            "options": ["Girls", "Boys", "Children", "Men"],
+            "correct": "Boys",
             "type": "multiple-choice"
         }
     ]

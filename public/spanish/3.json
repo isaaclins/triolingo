@@ -1,38 +1,42 @@
 {
     "lessons": [
         {
-            "question": "Complete: 'Me llamo ___'",
+            "question": "Complete: '[Me llamo](My name is) [...](Name)'",
             "options": ["es", "soy", "Maria", "tengo"],
             "correct": "Maria",
-            "type": "fill-blank"
+            "type": "multiple-choice"
         },
         {
-            "question": "Complete: 'Yo ___ estudiante'",
+            "question": "Complete: 'Yo [...](I am) [un/una](a) [Hombre](Man) / [Mujer](Woman)'",
             "options": ["es", "soy", "eres", "son"],
             "correct": "soy",
-            "type": "fill-blank"
+            "type": "multiple-choice"
         },
         {
-            "question": "Complete: '¿Cómo te ___?'",
-            "options": ["llamas", "llamo", "llama", "llamamos"],
-            "correct": "llamas",
-            "type": "fill-blank"
-        },
-        {
-            "question": "What does '¿Cómo te llamas?' mean in English?",
-            "options": ["How are you?", "What is your name?", "Where are you from?", "How old are you?"],
+            "question": "What does ['¿Cómo te llamas?](What is your name?) mean in English?",
+            "options": [
+                "How are you?",
+                "What is your name?",
+                "Where are you from?",
+                "How old are you?"
+            ],
             "correct": "What is your name?",
             "type": "multiple-choice"
         },
         {
-            "question": "What does 'Mucho gusto' mean in English?",
+            "question": "What does ['Mucho gusto](Nice to meet you) mean in English?",
             "options": ["Nice to meet you", "See you later", "Good morning", "Good night"],
             "correct": "Nice to meet you",
             "type": "multiple-choice"
         },
         {
-            "question": "What does '¿De dónde eres?' mean in English?",
-            "options": ["How are you?", "What is your name?", "Where are you from?", "How old are you?"],
+            "question": "What does ['¿De dónde eres?](Where are you from?) mean in English?",
+            "options": [
+                "How are you?",
+                "What is your name?",
+                "Where are you from?",
+                "How old are you?"
+            ],
             "correct": "Where are you from?",
             "type": "multiple-choice"
         }

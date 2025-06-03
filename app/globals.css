@@ -86,3 +86,58 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add styles for hoverable words and tooltips */
+.hoverable-word {
+  text-decoration: underline dotted;
+  text-decoration-color: #60a5fa; /* A blue color, adjust as needed */
+  text-underline-offset: 2px;
+  position: relative; /* For positioning the tooltip */
+  cursor: help;
+}
+
+.hoverable-word::after {
+  content: attr(data-definition);
+  position: absolute;
+  bottom: 110%; /* Position above the word */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2d3748; /* Dark gray, adjust as needed */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+  z-index: 20; /* Ensure it's on top */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.hoverable-word:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: add a little arrow to the tooltip */
+.hoverable-word::before {
+  content: '';
+  position: absolute;
+  bottom: calc(110% - 5px); /* Align with the bottom of ::after, adjusted for arrow size */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #2d3748 transparent transparent transparent; /* Arrow pointing down, same color as tooltip bg */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+  z-index: 19; /* Below ::after but above other content */
+}
+
+.hoverable-word:hover::before {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,5 +1,9 @@
 [
-  { "id": "1", "title": "Basic Greetings" },
-  { "id": "2", "title": "Animals" },
-  { "id": "3", "title": "Introduction" }
-] 
+    { "id": "1", "title": "Basic Greetings" },
+    { "id": "2", "title": "Animals" },
+    { "id": "3", "title": "Introduction" },
+    { "id": "4", "title": "Common Verbs" },
+    { "id": "5", "title": "Numbers and Colors" },
+    { "id": "6", "title": "Family Members" },
+    { "id": "7", "title": "Around the House" }
+]

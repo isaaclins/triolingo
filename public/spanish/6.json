@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "Your [mother's](madre) [sister](hermana) is your ___. Choose the correct Spanish term.",
+      "options": ["tía (aunt)", "abuela (grandmother)", "prima (cousin)"],
+      "correct": "tía (aunt)",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Spanish word for '[brother](hermano)'.",
+      "correct": "hermano",
+      "type": "fill-blank"
+    },
+    {
+      "question": "What is the term for '[grandparents](abuelos)' in Spanish?",
+      "options": ["padres (parents)", "hijos (children)", "abuelos (grandparents)"],
+      "correct": "abuelos (grandparents)",
+      "type": "multiple-choice"
+    }
+  ]
+} 

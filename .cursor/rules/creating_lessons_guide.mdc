@@ -1,0 +1,237 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Guide for Adding New Languages and Lessons
+
+This document outlines the structure and steps for adding new languages or new lesson sets to the language learning application.
+
+## I. Directory and File Structure Overview
+
+The lesson content is organized within the `public/` directory as follows:
+
+1.  **Available Languages List:**
+    *   `[public/languages.json](public/languages.json)`: Defines all languages supported by the app.
+2.  **Language-Specific Content:**
+    *   `public/[languageCode]/`: A directory for each language (e.g., `public/spanish/`).
+        *   `[lessons.json for Spanish](public/spanish/lessons.json)`: Lists all lesson *sets* for that specific language (example for Spanish).
+        *   `public/[languageCode]/[lessonSetId].json`: Contains the actual questions and answers for a specific lesson set (e.g., `[1.json for Spanish](public/spanish/1.json)`).
+
+## II. Adding a New Language
+
+Let's say you want to add "French".
+
+**Step 1: Update `languages.json`**
+
+Add an entry for the new language in `[public/languages.json](public/languages.json)`.
+
+*   **Example:**
+    ```json
+    [
+      {
+        "code": "spanish",
+        "name": "Spanish",
+        "flag": "🇪🇸"
+      },
+      {
+        "code": "polish",
+        "name": "Polish",
+        "flag": "🇵🇱"
+      },
+      {
+        "code": "french", 
+        "name": "French",   
+        "flag": "🇫🇷"     
+      }
+    ]
+    ```
+
+**Step 2: Create Language Directory**
+
+Create a new directory under `public/` named after the language code.
+
+*   **Example:** `public/french/`
+
+**Step 3: Create `lessons.json` for the New Language**
+
+Inside the new language directory (e.g., `public/french/`), create a `lessons.json` file. 
+
+*   **Example:** `public/french/lessons.json`
+    ```json
+    [
+      {
+        "id": "1",
+        "title": "Basic French Greetings"
+      },
+      {
+        "id": "2",
+        "title": "Common French Nouns"
+      }
+    ]
+    ```
+
+**Step 4: Create Individual Lesson Set Files**
+
+For each lesson set defined in `public/french/lessons.json`, create a corresponding JSON file in the `public/french/` directory, named after its `id`.
+
+*   **Example:** `public/french/1.json` (for "Basic French Greetings")
+
+    ```json
+    {
+      "lessons": [
+        {
+          "question": "What does '[Bonjour](Hello)' mean in English?",
+          "options": ["Hello", "Goodbye", "Thank you"],
+          "correct": "Hello",
+          "type": "multiple-choice"
+        },
+        {
+          "question": "How do you say 'Goodbye' in French?",
+          "correct": "Au revoir",
+          "type": "fill-blank"
+        }
+      ]
+    }
+    ```
+
+## III. Adding a New Lesson Set to an Existing Language
+
+Let's say you want to add a new lesson set "Food Vocabulary" to "Spanish".
+
+**Step 1: Update the Language's `lessons.json`**
+
+Edit `[public/spanish/lessons.json](public/spanish/lessons.json)` and add a new entry for your lesson set. 
+
+*   **Example:** `public/spanish/lessons.json`
+    ```json
+    [
+      {
+        "id": "1",
+        "title": "Basic Greetings"
+      },
+      {
+        "id": "2",
+        "title": "Animals"
+      },
+      {
+        "id": "3",
+        "title": "Introduction"
+      },
+      { 
+        "id": "4", 
+        "title": "Food Vocabulary"
+      }
+    ]
+    ```
+
+**Step 2: Create the New Lesson Set File**
+
+Create a new JSON file in `public/spanish/` named after the new `id` (e.g., `4.json`).
+
+*   **Example:** `public/spanish/4.json`
+    ```json
+    {
+      "lessons": [
+        {
+          "question": "What is '[manzana](apple)' in English?",
+          "options": ["apple", "banana", "strawberry"],
+          "correct": "apple",
+          "type": "multiple-choice"
+        },
+        {
+          "question": "Type the Spanish word for 'bread'.",
+          "correct": "pan",
+          "type": "fill-blank"
+        }
+      ]
+    }
+    ```
+
+## IV. Lesson Item JSON Structure Rules
+
+Each item within the `"lessons"` array of a lesson set file (e.g., `[public/spanish/1.json](public/spanish/1.json)`) must follow this structure:
+
+*   **`question` (string, required):**
+    *   The text of the question displayed to the user.
+    *   **Using Hover Definitions (Hints) - DETAILED GUIDE:**
+        *   **Core Syntax:** To make any word or phrase hoverable to show its definition (a "hint"), enclose the target word/phrase in square brackets `[]`, immediately followed by its definition in parentheses `()`.
+            *   Format: `[word_or_phrase](its_definition)`
+            *   Simple Example: `"[casa](house)"` will render "casa" as hoverable, and the tooltip will display "house".
+            *   Phrase Example: `"[buenos días](good morning)"` will show "good morning" when "buenos días" is hovered.
+
+        *   **Principle of Maximum Utility - Assume Low Prior Knowledge:**
+            *   **Be Generous with Hints:** When crafting questions, especially for beginner and intermediate lessons, operate under the assumption that many words in the question (not just the direct word being tested) might be new or unfamiliar to the learner.
+            *   **Every Word a Potential Hint:** Strive to provide hints for as many non-trivial words in the question sentence as feasible, particularly if they are not the direct subject of the question's evaluation.
+            *   The goal is to reduce cognitive load for words that are *not* being tested in that specific question, allowing the learner to focus on the actual challenge.
+
+        *   **Granularity and Breaking Down Sentences:**
+            *   Provide hints for individual words or short, meaningful grammatical phrases within a sentence. This helps learners understand sentence structure and vocabulary components.
+            *   **Detailed Granular Example (User-Provided Style):**
+                `"Complete: '[Yo](I) [soy](am) ___ [un/una](a/an) [hombre](man) / [mujer](woman).'"`
+                In this example:
+                *   `[Yo](I)`: Defines the pronoun "Yo".
+                *   `[soy](am)`: Defines the verb form "soy" (from "ser" - to be). Consider `(I am)` for more directness.
+                *   `[un/una](a/an)`: Explains that "un/una" means "a" or "an", implicitly teaching gender agreement with the following blank.
+                *   `[hombre](man)`: Translates "hombre".
+                *   `[mujer](woman)`: Translates "mujer".
+            *   **Another Detailed Example:**
+                Original sentence: `"¿Cómo estás tú hoy por la mañana?"` (How are you today in the morning?)
+                Hinted version: `"¿[Cómo](How) [estás](are you_informal) [tú](you_informal) [hoy](today) [por la mañana](in the morning)?"`
+                This breaks down a common phrase into its core components, making each part understandable.
+
+        *   **Clarity and Precision of Definitions:**
+            *   **Be Exact:** The definition inside `(definition)` should be precise, concise, and contextually accurate.
+            *   **Context is Key:** If a word has multiple meanings, provide the one most relevant to the question. If teaching a specific nuance, reflect that.
+                *   Example for "tiempo":
+                    *   If about weather: `"[tiempo](weather)"`
+                    *   If about time: `"[tiempo](time)"`
+                    *   If context is general: `"[tiempo](time/weather)"` (though more specific is usually better).
+            *   **No Special Formatting in Definitions:** The definition text is plain. Markdown or HTML within the `(definition)` part is **not** supported by the current parser and will appear as literal text.
+
+        *   **Multiple Hints are Encouraged:** Use as many hint markups as necessary in a single question string to achieve clarity.
+            *   Example: `"El [gato](cat) [negro](black) [duerme](sleeps) [sobre](on top of) la [silla](chair)."`
+
+        *   **CRITICAL RULE (Reiteration and Emphasis) - DO NOT REVEAL THE ANSWER in Multiple Choice:**
+            *   The primary directive for hints in **multiple-choice questions** is to AVOID using the `[word](definition)` markup if the `definition` itself *directly reveals or is identical to the correct answer* when that answer is one of the explicit choices provided in the `"options"` array.
+            *   Hints should aid comprehension of the question's structure or ancillary vocabulary, **not** give away the specific answer being tested among the choices.
+            *   **Example of what to AVOID:**
+                `{"question": "What is the Spanish word for 'cat': [gato](cat)?", "options": ["perro", "gato", "pájaro"], "correct": "gato"}`
+                (Here, the hint `[gato](cat)` makes the question trivial because "gato" is an option, and the hint shows its meaning is "cat".)
+            *   **Better (Hinting a related concept, not the direct answer's core word):**
+                `{"question": "A common [mascota](pet) that says 'meow' is a 'gato'. What is a 'gato' in English?", "options": ["dog", "cat", "bird"], "correct": "cat"}` (Hinting "mascota" is fine).
+            *   **Acceptable (When the DEFINITION isn't the answer among options):**
+                `{"question": "The Spanish word for 'cat' is [gato](cat). Is this statement true?", "options": ["True", "False"], "correct": "True"}` (Here, the definition "cat" is not "True" or "False").
+
+        *   **Use in Fill-in-the-Blank Questions:** Hints are highly effective in fill-in-the-blank questions to clarify parts of the sentence that are *not* the blank itself, helping the user understand the context for the word they need to provide.
+            *   Example: `"En [verano](summer), [nosotros](we) [vamos](go) a la [playa](beach). El agua del mar es ____."` (If the blank is, for instance, "azul" or "fría").
+
+    *   **Question Formulation - Avoiding Redundancy and Direct Giveaways:**
+        *   **Objective:** Craft questions that require the learner to deduce the meaning of the target word or phrase, rather than having it explicitly stated or defined within the question text itself (unless the question is *about* that statement, e.g., True/False).
+        *   **Avoid Direct Statements of the Answer:** Do not formulate questions where the answer is given away by the phrasing of the question if the goal is to test the vocabulary word itself.
+            *   **Example of what to AVOID:**
+                `"Your [parents](parents) are your 'padres'. This word means?"` (Options: Parents, Grandparents, etc.)
+                This is problematic because:
+                1.  The first part `Your [parents](padres) are your 'padres'` already defines 'padres' as 'parents'. The hint on 'parents' further confirms this.
+                2.  The question "This word means?" becomes trivial.
+            *   **Better Approach (Focus on Definition or Contextual Use):**
+                Instead of explicitly stating the relationship in the question, prompt for the definition directly or use it in a contextual sentence where other parts might be hinted.
+                *   `"What is the Spanish term for your [mother](madre) and [father](padre) collectively?"` (Options: padres, abuelos, hijos, hermanos. Correct: padres)
+                    *   Here, hints for `madre` and `padre` aid comprehension without giving away `padres`.
+                *   `"In Spanish, 'padres' can refer to your parents. Is this true or false?"`
+                *   `"Fill in the blank: Mis ___ son Juan y Maria." (My ___ are Juan and Maria.)` (If `padres` is the expected fill-in, and hints could be on `Mis` or names if needed).
+        *   **Rely on Choices and Hinted Ancillary Words:** For multiple-choice questions, let the options provide the test. Use hints for *other* words in the question to ensure the learner understands the *question itself*, not to give away the answer.
+        *   **Let the AI (you!) be mindful:** When generating new questions, the AI should prioritize creating a meaningful challenge. If a word has a hover hint, the question text MAY *also* define that word if that word is the answer.
+
+*   **`options` (array of strings, optional):**
+    *   Required if `type` is `"multiple-choice"`.
+    *   Example: `["Option A", "Option B", "Option C"]`
+*   **`correct` (string, required):**
+    *   The correct answer. Must match an option for multiple-choice.
+*   **`type` (string, required):**
+    *   Currently: `"multiple-choice"` or `"fill-blank"`.
+
+**JSON Syntax Reminders:**
+*   Use double quotes for all keys and string values.
+*   Commas separate elements in objects and arrays (no trailing commas).
+*   Escape `"` as `\"` and `\` as `\\` within strings if needed. Apostrophes (`'`) generally don't need escaping inside double-quoted JSON strings.

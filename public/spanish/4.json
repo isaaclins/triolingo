@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What does '[correr](to run)' mean in English?",
+      "options": ["to run", "to eat", "to sleep"],
+      "correct": "to run",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Fill in the blank: Yo _____ [agua](water) [todos los días](every day). (I drink water every day.)",
+      "correct": "bebo",
+      "type": "fill-blank"
+    },
+    {
+      "question": "The verb '[ser](to be)' is used for permanent characteristics. What is the 'yo' (I) form of '[ser](to be)'?",
+      "options": ["soy", "estoy", "voy"],
+      "correct": "soy",
+      "type": "multiple-choice"
+    }
+  ]
+} 
