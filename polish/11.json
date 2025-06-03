@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "How do you ask '[Where is](Gdzie jest)' the [train station](dworzec kolejowy)? Choose the correct Polish phrase.",
+      "options": ["[Gdzie jest](Where is) [dworzec kolejowy](train station)?", "[Ile kosztuje](How much costs) [bilet](ticket)?", "[Która godzina](What time is it)?"],
+      "correct": "[Gdzie jest](Where is) [dworzec kolejowy](train station)?",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish word for '[left](left)' (direction).",
+      "correct": "lewo",
+      "type": "fill-blank"
+    },
+    {
+      "question": "'[Prosto](Straight), [potem](then) w [prawo](right)'. This means to go straight, then what?",
+      "options": ["Left", "Right", "Back"],
+      "correct": "Right",
+      "type": "multiple-choice"
+    }
+  ]
+} 

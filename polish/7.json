@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What does the [czasownik](verb) '[być](to be)' mean?",
+      "options": ["To have", "To be", "To go"],
+      "correct": "To be",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish verb for '[to have](to have)'.",
+      "correct": "mieć",
+      "type": "fill-blank"
+    },
+    {
+      "question": "'[Ja](I) [idę](go)'. What does '[idę](go)' mean in this context?",
+      "options": ["I eat", "I see", "I go"],
+      "correct": "I go",
+      "type": "multiple-choice"
+    }
+  ]
+} 

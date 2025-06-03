@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What is the Polish word for '[shirt](shirt)'?",
+      "options": ["koszula", "spodnie", "buty"],
+      "correct": "koszula",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish word for '[shoes](shoes)'.",
+      "correct": "buty",
+      "type": "fill-blank"
+    },
+    {
+      "question": "'[Czerwona](Red) [sukienka](dress)'. What item of [ubranie](clothing) is being described as [czerwona](red)?",
+      "options": ["Scarf", "Dress", "Hat"],
+      "correct": "Dress",
+      "type": "multiple-choice"
+    }
+  ]
+} 

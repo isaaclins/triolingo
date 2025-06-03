@@ -1,0 +1,26 @@
+{
+  "lessons": [
+    {
+      "question": "What does '[chleb](bread)' mean in English?",
+      "options": ["Bread", "Milk", "Cheese"],
+      "correct": "Bread",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "How do you say 'water' in Polish?",
+      "correct": "woda",
+      "type": "fill-blank"
+    },
+    {
+      "question": "[Jabłko](Apple) is a type of [owoc](fruit). What is '[jabłko](apple)'?",
+      "options": ["Apple", "Pear", "Banana"],
+      "correct": "Apple",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish word for '[milk](milk)'.",
+      "correct": "mleko",
+      "type": "fill-blank"
+    }
+  ]
+} 

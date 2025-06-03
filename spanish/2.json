@@ -1,22 +1,39 @@
 {
-    "title": "Animals",
     "lessons": [
         {
-            "question": "Choose the correct translation for 'cat':",
+            "question": "Choose the correct translation for ['cat'](gato):",
             "options": ["perro", "gato", "casa", "agua"],
             "correct": "gato",
             "type": "multiple-choice"
         },
         {
-            "question": "Choose the correct translation for 'dog':",
+            "question": "Choose the correct translation for ['dog'](perro):",
             "options": ["perro", "gato", "casa", "agua"],
             "correct": "perro",
             "type": "multiple-choice"
         },
         {
-            "question": "Choose the correct translation for 'bird':",
+            "question": "Choose the correct translation for ['bird'](pájaro):",
             "options": ["pájaro", "pez", "ratón", "caballo"],
             "correct": "pájaro",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does ['Gato'](cat) mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Cat",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does ['Perro'](dog) mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Dog",
+            "type": "multiple-choice"
+        },
+        {
+            "question": "What does ['Pájaro'](bird) mean in English?",
+            "options": ["Dog", "Cat", "Bird", "Fish"],
+            "correct": "Bird",
             "type": "multiple-choice"
         }
     ]

@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What is the color '[rojo](red)' in English?",
+      "options": ["blue", "red", "green"],
+      "correct": "red",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "How do you say '[five](cinco)' in Spanish?",
+      "correct": "cinco",
+      "type": "fill-blank"
+    },
+    {
+      "question": "Which number comes after '[siete](seven)': '[ocho](eight)' or '[nueve](nine)?",
+      "options": ["ocho", "nueve", "seis"],
+      "correct": "ocho",
+      "type": "multiple-choice"
+    }
+  ]
+} 

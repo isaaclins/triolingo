@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What is the Polish word for '[mother](mother)'?",
+      "options": ["matka", "ojciec", "siostra"],
+      "correct": "matka",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish word for '[brother](brother)'.",
+      "correct": "brat",
+      "type": "fill-blank"
+    },
+    {
+      "question": "'[Rodzice](Parents)' refers to your [matka](mother) and ...?",
+      "options": ["ojciec (father)", "babcia (grandmother)", "dziadek (grandfather)"],
+      "correct": "ojciec (father)",
+      "type": "multiple-choice"
+    }
+  ]
+} 

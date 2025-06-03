@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What is '[dom](house)' in English?",
+      "options": ["House", "Apartment", "Room"],
+      "correct": "House",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish word for '[kitchen](kitchen)'.",
+      "correct": "kuchnia",
+      "type": "fill-blank"
+    },
+    {
+      "question": "A '[stół](table)' is a piece of [meble](furniture) often found in the '[jadalnia](dining room)'. What is a '[stół](table)'?",
+      "options": ["Chair", "Table", "Bed"],
+      "correct": "Table",
+      "type": "multiple-choice"
+    }
+  ]
+} 

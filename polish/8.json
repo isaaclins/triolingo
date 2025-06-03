@@ -1,0 +1,21 @@
+{
+  "lessons": [
+    {
+      "question": "What is a Polish [przymiotnik](adjective) for '[big](big)'?",
+      "options": ["duży", "mały", "szybki"],
+      "correct": "duży",
+      "type": "multiple-choice"
+    },
+    {
+      "question": "Type the Polish adjective for '[beautiful](beautiful)' (feminine form).",
+      "correct": "piękna",
+      "type": "fill-blank"
+    },
+    {
+      "question": "'[Zimna](Cold) [woda](water)'. '[Zimna](Cold)' describes the [woda](water) as what?",
+      "options": ["Hot", "Cold", "Warm"],
+      "correct": "Cold",
+      "type": "multiple-choice"
+    }
+  ]
+} 
